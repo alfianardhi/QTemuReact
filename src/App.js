@@ -10,7 +10,7 @@ import MainTitle from './Components/MainTitle.js';
 import MainTitleSee from './Components/MainTitleSee.js';
 import PastMeetups from './Components/PastMeetups.js';
 import Footer from './Components/Footer.js';
-
+import axios from 'axios';
 
 class App extends Component {
 
@@ -18,10 +18,10 @@ class App extends Component {
     super(props)
     this.state = {
       title: 'QTemu',
-      maintitle1: 'Next Meetup',
-      maintitle2: 'About Meetup',
-      maintitlesee1: 'Members',
-      maintitlesee2: 'Past Meetups',
+      nextmeetupTitle: 'Next Meetup',
+      aboutmeetupTitle: 'About Meetup',
+      membersTitle: 'Members',
+      pastmeetupsTitle: 'Past Meetups',
       footertitle:'Copyright Hacktiv8 2018',
       menus: [
         {        
@@ -33,16 +33,15 @@ class App extends Component {
           menu: 'Explore'    
         },
       ],
-      headercontent: [
+      headercontent: 
         {        
           location: 'Jakarta Indonesia',    
           members: '1,078',
           organizers: 'Ardhy Wiranata'      
         },
-      ],
-      maincontent: [
-        {        
-          title: 'Awesome meetup and event',    
+      maincontent:
+        {       
+          eventtitle: 'Awesome meetup and event',    
           dateevent: '25 Januari 2019',
           greating: 'Hello, Javascript & Node.js Ninjas!',
           content:'Get ready for our montly meetup JakartaJS! This will be our fifth meetup of 2018!. The meetup format will contain some short stories and trchnical tyalks. If you have a short announcement you\'d like to share with the audience, you may do so during open mic announcements.',
@@ -51,7 +50,6 @@ class App extends Component {
           closing:'See You There!',
           team: 'Best, Hengki, Giovanni, Sofian, Riza, Agung The JakartaJS Organizers'     
         },
-      ],
       meetups: [
         {        
           content: 'Come and meet other developers interested in Javascript and it\'s library in the Greater Jakarta area.',    
@@ -60,12 +58,11 @@ class App extends Component {
           hashtag:'#jakartajs'      
         },
       ],
-      members: [
+      members:
         {        
           name: 'Adhy Wiranata',
           count:'4'      
         },
-      ],
       pastmeetups: [
         {        
           id: '#39',
@@ -86,25 +83,62 @@ class App extends Component {
           company: 'Hacktiv8',
           count: '110'        
         }
-      ],         
+      ],
+      peoples:[]
+      ,         
     }
   }
 
+  componentDidMount() {
+    axios
+      .get("https://swapi.co/api/people")
+      .then(response => {
+        console.log('hasil ------------- ', response.data);  
+        let headercontent = Object.assign({}, this.state.headercontent);   
+        headercontent.organizers = response.data.results[0].name;  
+        
+        let members = Object.assign({}, this.state.members);
+        members.name = response.data.results[3].name;  
+
+        let maincontent = Object.assign({}, this.state.maincontent);
+        let arrayLength = 6;
+        let nameTmp = ''; 
+        for (var i = 0; i < arrayLength; i++) {
+            nameTmp += response.data.results[i].name;
+            if(i < arrayLength-1){
+              nameTmp +=' ,';
+            }else{
+              nameTmp+=' The JakartaJS Organizers.';
+            }
+        }
+        maincontent.team = nameTmp
+
+        this.setState({
+          headercontent,
+          members,
+          maincontent
+        });
+        //this.setState({ 
+           //   peoples: response.data 
+          //})
+        });
+  }
+
   render() {
-    let { title, pastmeetups, headercontent, maincontent, maintitle1, maintitle2, meetups, maintitlesee1, maintitlesee2, members, footertitle, menus } = this.state;
+    let { title, pastmeetups, headercontent, maincontent, nextmeetupTitle, aboutmeetupTitle, meetups, membersTitle, pastmeetupsTitle, members, footertitle, menus, peoples } = this.state;
     return (
       <React.Fragment>
         
         
         <NavBar title={title} menus={menus}/>
         <HeaderContent headercontent={headercontent}  />
-        <MainTitle maintitle1={maintitle1}/>
+        <MainTitle maintitle1={nextmeetupTitle}/>
         <MainContent maincontent={maincontent}/>
-        <MainTitle maintitle1={maintitle2}/>
+        <MainTitle maintitle1={aboutmeetupTitle}/>
         <Meetups meetups={meetups}/>
-        <MainTitleSee maintitlesee1={maintitlesee1}/>
+        <MainTitleSee maintitlesee1={membersTitle}/>
         <Members members={members}/>
-        <MainTitleSee maintitlesee1={maintitlesee2}/>
+        <MainTitleSee maintitlesee1={pastmeetupsTitle}/>
         <PastMeetups pastmeetups={pastmeetups}/>   
         <Footer footertitle={footertitle}/>     
       </React.Fragment>
