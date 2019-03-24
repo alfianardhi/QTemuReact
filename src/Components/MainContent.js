@@ -32,28 +32,28 @@ class MainContent extends React.Component{
           <Grid item xs container direction="column" spacing={16}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1">
-                {this.props.maincontent[0].title}
+                {this.props.maincontent.eventtitle}
               </Typography>
               <Typography gutterBottom color="textSecondary">
-                {this.props.maincontent[0].dateevent}
+                {this.props.maincontent.dateevent}
               </Typography>
               <Typography variant="body2">
-                {this.props.maincontent[0].greating}
+                {this.props.maincontent.greating}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                {this.props.maincontent[0].content}
+                {this.props.maincontent.content}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                {this.props.maincontent[0].notesevent}
+                {this.props.maincontent.notesevent}
              </Typography>
              <Typography variant="body2" gutterBottom>
-                {this.props.maincontent[0].diveevent}
+                {this.props.maincontent.diveevent}
              </Typography>
              <Typography variant="body2" gutterBottom>
-                {this.props.maincontent[0].closing}
+                {this.props.maincontent.closing}
              </Typography>
              <Typography variant="body2" gutterBottom>
-                {this.props.maincontent[0].team}
+                {this.props.maincontent.team}
              </Typography>
             </Grid>
           </Grid>

@@ -32,7 +32,6 @@ class Meetups extends React.Component{
         <Grid item xs={12} sm container>
           <Grid item xs container direction="column" spacing={16}>
               <Divider />
-
               <Typography variant="body2" gutterBottom align="center">
                   {this.props.footertitle}
               </Typography>

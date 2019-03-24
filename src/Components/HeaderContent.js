@@ -31,7 +31,7 @@ const styles = theme => ({
 
 class HeaderContent extends React.Component{
     render(){
-        const { classes, theme } = this.props;
+        const { classes, headercontent, theme } = this.props;
   return (
 <div className={classes.root}>
 <Paper className={classes.paper}>
@@ -48,13 +48,13 @@ class HeaderContent extends React.Component{
             Hacktive8 Meetup
           </Typography>
           <Typography gutterBottom color="textSecondary">
-          Location:  {this.props.headercontent[0].location}
+          Location:  {headercontent.location}
           </Typography>
         <Typography gutterBottom color="textSecondary">
-          Members: {this.props.headercontent[0].members}
+          Members: {headercontent.members}
         </Typography>
         <Typography gutterBottom color="textSecondary">
-          Organizers:  {this.props.headercontent[0].organizers}
+          Organizers:  {headercontent.organizers}
         </Typography>
         </Grid>
         

@@ -34,7 +34,7 @@ class NavBar extends React.Component{
               </Typography>
               </Toolbar>
               {this.props.menus.map(a => (
-                <Toolbar>
+                <Toolbar key={a.id}>
                   <Typography className={classes.title} variant="subtitle1" color="inherit" noWrap>
                     {a.menu}
                   </Typography>

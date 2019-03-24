@@ -46,12 +46,12 @@ class Members extends React.Component{
           <Grid container >
             <Grid item xs={3}>
               <Typography gutterBottom variant="body2">
-                {this.props.members[0].name}
+                {this.props.members.name}
               </Typography>
             </Grid>
             <Grid item xs={3}>
             <Typography gutterBottom variant="body2">
-              {this.props.members[0].count} Others.
+              {this.props.members.count} Others.
               </Typography>
             </Grid>
           </Grid>
