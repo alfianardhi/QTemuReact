@@ -4,8 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import { red } from "@material-ui/core/colors";
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
+
 
 
 
@@ -20,12 +21,9 @@ const styles = theme => ({
     marginBottom: 5,
     maxWidth: '100%',
   },
-  test:{
-    backgroundColor:red,
-  },
 });
 
-class Meetups extends React.Component{
+class Explore extends React.Component{
     render(){
         const { classes, theme } = this.props;
 
@@ -33,18 +31,11 @@ class Meetups extends React.Component{
     
     <div className={classes.mainStyle}>
       <Grid container spacing={16}>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={16}>
-              <Divider />
-              <Typography variant="body2" gutterBottom align="center" className={classes.test}>
-                  {this.props.footertitle}
-              </Typography>
-          </Grid>
-        </Grid>
+           Explore
       </Grid>
     </div>  
     );
     }
 }
 
-export default withStyles(styles, { withTheme: true })(Meetups);
+export default withStyles(styles, { withTheme: true })(Explore);

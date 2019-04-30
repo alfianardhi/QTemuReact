@@ -5,6 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
+
 
 const styles = {
   root: {
@@ -30,7 +32,7 @@ class NavBar extends React.Component{
             <Toolbar>
               <Toolbar>
                 <Typography variant="headline" color="inherit">
-                {this.props.title}
+                <Link to="/">{this.props.title}</Link>
               </Typography>
               </Toolbar>
               {this.props.menus.map(a => (
@@ -44,7 +46,8 @@ class NavBar extends React.Component{
                 <Typography variant="h6" color="inherit" className={classes.grow}>
                 </Typography>
                 
-                <Button color="inherit" >Login</Button>
+                  <Button color="inherit" ><Link to="/register">Login</Link></Button>
+                  
             </Toolbar>
           </AppBar>
           </div>

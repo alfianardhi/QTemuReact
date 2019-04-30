@@ -43,22 +43,43 @@ class HeaderContent extends React.Component{
     </Grid>
     <Grid item xs={12} sm container>
       <Grid item xs container direction="column" spacing={16}>
-        <Grid item xs>
         <Typography gutterBottom component="h6" variant="h6">
             Hacktive8 Meetup
-          </Typography>
-          <Typography gutterBottom color="textSecondary">
-          Location:  {headercontent.location}
-          </Typography>
-        <Typography gutterBottom color="textSecondary">
-          Members: {headercontent.members}
         </Typography>
-        <Typography gutterBottom color="textSecondary">
-          Organizers:  {headercontent.organizers}
-        </Typography>
-        </Grid>
         
-        <Grid item>
+        <Grid container spacing={5}>
+        <Grid item xs={6} sm={1}>
+          <Typography gutterBottom color="textSecondary">
+            Location  
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={11}>
+          <Typography gutterBottom color="textSecondary">
+            {headercontent.location}
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={1}>
+          <Typography gutterBottom color="textSecondary">
+            Members 
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={11}>
+          <Typography gutterBottom color="textSecondary">
+            {headercontent.members}
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={1}>
+          <Typography gutterBottom color="textSecondary">
+            Organizers
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={11}>
+          <Typography gutterBottom color="textSecondary">
+            {headercontent.organizers}
+          </Typography>
+        </Grid>
+      </Grid>
+        <Grid container spacing={5}>
           <Button variant="contained" color="primary" className={classes.button}>
             Join Us
         </Button>
