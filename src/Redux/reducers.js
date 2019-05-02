@@ -22,7 +22,7 @@ const myReducer = (state = {...myStore}, action) => {
         case('ADDUSER'):
             return({
                 ...state,
-                test1:action.payload
+                people:action.payload
             })
 
         default:

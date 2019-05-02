@@ -3,12 +3,12 @@ import axios from 'axios';
 //axios
 export const fetchDatas = () => {
     return (dispatch) => { //dispatch untuk menjalankan fungsi
-      dispatch(addUserStarted()); // ini aksi start semisal untuk loading
+      //dispatch(addUserStarted()); // ini aksi start semisal untuk loading
   
       axios
       .get("https://swapi.co/api/people")
       .then(res => {
-          dispatch(addUserToReducer(res.data));
+          dispatch(addUserToReducer(res.data.results));
        })
     };
   };
