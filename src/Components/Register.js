@@ -25,13 +25,25 @@ const styles = theme => ({
 });
 
 class Register extends React.Component{
+    componentDidMount() {
+        this.props.fetchDatas();
+      }
     render(){
         const { classes, theme } = this.props;
-        console.log(this.props, "=============================");
+        console.log(this.props, "propshallo=============================");
+        //this.props.fetchDatas();
+        //console.log("CEK 1---",test1);
+        //console.log("CEK 2---",cekhasil.results[0].name);
   return (
     
     <div>
-        <div>    
+        <div> 
+        <ul>
+        {this.props.peoples.map(product =>
+          <li key={product.height}>{product.name}</li>
+        )}
+      </ul>
+            <h2>{this.props.titlecok}</h2>  
           <h2>{this.props.counter}</h2>    
           <button onClick={() => this.props.increment()}>+</button>    
           <button onClick={() => this.props.decrement(10)}>-</button>
@@ -44,7 +56,9 @@ class Register extends React.Component{
 
 
 const mapStateToProps = (state) => ({    
-  counter: state.angka  
+  counter: state.angka,
+  titlecok:state.title,
+  peoples:state.people
 });
 
 const mapDispatchToProps = ({  

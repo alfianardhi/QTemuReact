@@ -79,7 +79,7 @@ class Home extends Component {
     axios
       .get("https://swapi.co/api/people")
       .then(response => {
-        console.log('hasil ------------- ', response.data);  
+        console.log('hasil HOME ------------- ', response.data);  
         let headercontent = Object.assign({}, this.state.headercontent);   
         headercontent.organizers = response.data.results[0].name;  
         
